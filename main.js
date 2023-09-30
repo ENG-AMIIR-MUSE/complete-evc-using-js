@@ -21,20 +21,77 @@ function displayErrorMessage() {
 // kushubo internet 
 function kushuboInternet(type) {
     let lacag = Number(prompt("EVCPLus \nFadlan Geli Lacagta :"))
-   if(isNaN(lacag)){
+    if (isNaN(lacag)) {
         alert(displayErrorMessage())
-        
-   }else{
-    if (confirm("EVCPlus \n Mahubtaa Inaad $" + lacag + " Ugu shubatid " + type + " internet")){
-        if(lacag  <= balance){
-            alert(`Waxaad ${lacag} ku shubutay  ${type} internet \nHaraagaaga Waa ${balance - lacag} `)
-        }else{
-            alert ("EVCPLUS \nHaraagaaga Kuguma Filna ");
+
+    } else {
+        if (confirm("EVCPlus \n Mahubtaa Inaad $" + lacag + " Ugu shubatid " + type + " internet")) {
+            if (lacag <= balance) {
+                alert(`Waxaad ${lacag} ku shubutay  ${type} internet \nHaraagaaga Waa ${balance - lacag} `)
+            } else {
+                alert("EVCPLUS \nHaraagaaga Kuguma Filna ");
+            }
+        } else {
+            exit()
         }
-    }else{
-        exit()
     }
-   }
+}
+function kuShuboAirtime() {
+    // alert()
+    let lacag = Number(prompt("EVCPLus \nFadlan Geli Lacagta :"))
+    if (isNaN(lacag)) {
+        alert(displayErrorMessage())
+    }else {
+        if (confirm("EVCPlus \n Mahubtaa Inaad $" + lacag + " Ugu shubatid  unDefined")) {
+            if (lacag <= balance) {
+                alert(`Waxaad ${lacag} ku shubutay  Airtime \nHaraagaaga Waa ${balance - lacag} `)
+            } else {
+                alert("EVCPLUS \nHaraagaaga Kuguma Filna ");
+            }
+        } else {
+            exit()
+        }
+    }
+}
+function uguShubAirtime() {
+    // alert()
+    let userNumber = Number(prompt("EVCPLus \nFadlan Geli Mobile-ka :"))
+    console.log(userNumber)
+    // let validatePhone  =  userNumber.toString()
+    const validatePhone = userNumber.toString();
+    if(validatePhone.length < 9 || validatePhone.length >= 11){
+        alert("invalid number , number length should be 9  or 10 ")
+
+        }else{
+            
+        }
+    // const validatePhone2 = userNumber.toString().padStart(9, "61");
+    // if( validatePhone.length == 9){
+    //     alert("yes" + validatePhone.length)
+    // }else{
+    //     alert("invalid  no"+ validatePhone.length)
+    // }
+    // if(validatePhone.startsWith("061") || validatePhone.startsWith("61")){
+    //     alert("valid "+ validatePhone)
+    // }else{
+    //     alert("invalid " + validatePhone + " "+ userNumber)
+    // }
+
+
+    // let lacag = Number(prompt("EVCPLus \nFadlan Geli Lacagta :"))
+    // if (isNaN(lacag)) {
+    //     alert(displayErrorMessage())
+    // }else {
+    //     if (confirm("EVCPlus \n Mahubtaa Inaad $" + lacag + " Ugu shubatid  unDefined")) {
+    //         if (lacag <= balance) {
+    //             alert(`Waxaad ${lacag} ku shubutay  Airtime \nHaraagaaga Waa ${balance - lacag} `)
+    //         } else {
+    //             alert("EVCPLUS \nHaraagaaga Kuguma Filna ");
+    //         }
+    //     } else {
+    //         exit()
+    //     }
+    // }
 }
 function cases() {
     switch (displayOptions()) {
@@ -44,6 +101,12 @@ function cases() {
         case 2:
             let caseTwoSelections = Number(prompt("1 . Ku Shubo Airtime \n2 .  Ugu Shun Airtime \n3 . Ku Shubo Internet\n0 . Kabax"))
             switch (caseTwoSelections) {
+                case 1:
+                    kuShuboAirtime()
+                    break; // caseTwoSelection of 1  ends here
+                case  2:
+                    uguShubAirtime();
+                    break;
                 case 3:
                     let caseThreeSelections = Number(prompt("Fadlan Dooro number-ka ku shubayso \n1 . Isbuucle (Weakly) \n2 . Maalinle (daily)  \n3 . Bile (monthly) \n0 . Kabax"))
                     if (caseThreeSelections == 1) {
@@ -56,24 +119,17 @@ function cases() {
                         kushuboInternet("Bile")
                     } else {
                         alert(displayErrorMessage())
-
                     }
                     switch (caseThreeSelections) {
                         case 0:
                             alert(exit())
-
                             break;
-
-
                     }
-                    break;// caseTwoSelection 4 : ends here 
+                    break;// caseTwoSelection of  4 : ends here 
                 case 0:
                     alert(exit())
-
                     break// caseTwoSelection 0 : ends here 
-
             }
-
             break; // case two ends here 
         case 0:
             alert(exit())
