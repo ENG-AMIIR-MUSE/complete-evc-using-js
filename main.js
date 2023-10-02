@@ -41,8 +41,8 @@ function kuShuboAirtime() {
     let lacag = Number(prompt("EVCPLus \nFadlan Geli Lacagta :"))
     if (isNaN(lacag)) {
         alert(displayErrorMessage())
-    }else {
-        if (confirm("EVCPlus \n Mahubtaa Inaad $" + lacag + " Ugu shubatid  unDefined")) {
+    } else {
+        if (confirm("EVCPlus \n Mahubtaa Inaad $" + lacag + " Ugu shubatid  unDefined\nOk \ncancel")) {
             if (lacag <= balance) {
                 alert(`Waxaad ${lacag} ku shubutay  Airtime \nHaraagaaga Waa ${balance - lacag} `)
             } else {
@@ -53,45 +53,50 @@ function kuShuboAirtime() {
         }
     }
 }
+function validateNumber(number) {
+    // console.log(n)
+    const validatePhone = number.toString();
+    let message = ""
+    if (!isNaN(number)) {
+        if (Number(validatePhone.length) === 9 || Number(validatePhone.length) === 10) {
+            if (validatePhone.startsWith("061") || validatePhone.startsWith("61")) {
+                message = true
+            } else {
+                message = "number should start with 061 or 61"
+            }
+        } else {
+            message = `invalid Number , number length should be 9 or 10 , your number is length is  ${validatePhone.length}`
+        }
+    } else {
+        message = "please enter a valid phone number"
+    }
+    return message
+}
 function uguShubAirtime() {
     // alert()
     let userNumber = Number(prompt("EVCPLus \nFadlan Geli Mobile-ka :"))
-    console.log(userNumber)
-    // let validatePhone  =  userNumber.toString()
-    const validatePhone = userNumber.toString();
-    if(validatePhone.length < 9 || validatePhone.length >= 11){
-        alert("invalid number , number length should be 9  or 10 ")
 
-        }else{
-            
+    if (validateNumber(userNumber) === true) {
+        let lacag = Number(prompt("EVCPLus \nFadlan Geli Lacagta :"))
+        if (lacag >= 1) {
+            if (confirm("EVCPlus \n Mahubtaa Inaad $" + lacag + " Ugu shubatid  unDefined")) {
+                if (lacag <= balance) {
+                    alert(`Waxaad ${lacag} ku shubutay  Airtime \nHaraagaaga Waa ${balance - lacag} `)
+                } else {
+                    alert("EVCPLUS \nHaraagaaga Kuguma Filna ");
+                }
+            } else {
+                exit()
+            }
         }
-    // const validatePhone2 = userNumber.toString().padStart(9, "61");
-    // if( validatePhone.length == 9){
-    //     alert("yes" + validatePhone.length)
-    // }else{
-    //     alert("invalid  no"+ validatePhone.length)
-    // }
-    // if(validatePhone.startsWith("061") || validatePhone.startsWith("61")){
-    //     alert("valid "+ validatePhone)
-    // }else{
-    //     alert("invalid " + validatePhone + " "+ userNumber)
-    // }
 
+        else {
+            alert("invalid Money !, ")
+        }
 
-    // let lacag = Number(prompt("EVCPLus \nFadlan Geli Lacagta :"))
-    // if (isNaN(lacag)) {
-    //     alert(displayErrorMessage())
-    // }else {
-    //     if (confirm("EVCPlus \n Mahubtaa Inaad $" + lacag + " Ugu shubatid  unDefined")) {
-    //         if (lacag <= balance) {
-    //             alert(`Waxaad ${lacag} ku shubutay  Airtime \nHaraagaaga Waa ${balance - lacag} `)
-    //         } else {
-    //             alert("EVCPLUS \nHaraagaaga Kuguma Filna ");
-    //         }
-    //     } else {
-    //         exit()
-    //     }
-    // }
+    } else {
+        alert(validateNumber(userNumber))
+    }
 }
 function cases() {
     switch (displayOptions()) {
@@ -104,7 +109,7 @@ function cases() {
                 case 1:
                     kuShuboAirtime()
                     break; // caseTwoSelection of 1  ends here
-                case  2:
+                case 2:
                     uguShubAirtime();
                     break;
                 case 3:
@@ -131,6 +136,19 @@ function cases() {
                     break// caseTwoSelection 0 : ends here 
             }
             break; // case two ends here 
+        case 3:
+
+            break;
+
+        case 4:
+            break;
+
+        case 5:
+            break;
+        case 6:
+            break;
+        case 7: break;
+
         case 0:
             alert(exit())
             break;
